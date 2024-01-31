@@ -1,0 +1,20 @@
+<%- include("../layouts/main") %>
+<h1 style="text-align: center;">Editando a Tarefa <%= tasks.title %></h1>
+<div class="container">
+  <form action="/tasks/add" method="POST">
+    <input type="hidden" name="id" value="<%= tasks.id %>" />
+    <div class="form-control">
+      <label for="title">Título:</label>
+      <input type="text" name="title" placeholder="O que você vai fazer?"
+      value="<%= tasks.title %> " />
+    </div>
+    <div class="form-control">
+      <label for="description">Descrição:</label>
+      <textarea
+        name="description"
+        placeholder="Descreva a tarefa..."
+      ><%= tasks.description %></textarea>
+    </div>
+    <input type="submit" value="Criar" />
+  </form>
+</div>
