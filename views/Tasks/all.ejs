@@ -4,18 +4,21 @@
   <ul class="task-list">
     <% tasks.forEach(function(task){ %>
     <li>
-      <a href="/" class="title"><%= task.title %></a>
+      <% if(task.done) { %>
+        <a href="/" class="title-done"><%= task.title %></a>
+      <% } else { %>
+        <a href="/" class="title"><%= task.title %></a>
+      <% } %>
       <div class="actions">
-        <a href=""><i class="bi bi-check2"></i></a>
-        <a href="/tasks/edit/<%= task.id %>"
-          ><i class="bi bi-pencil-square"></i
-        ></a>
+        <form action="/tasks/update/status" method="POST">
+          <input type="hidden" name="id" value="<%= task.id %>" />
+          <input type="hidden" name="done" value="<%= task.done %>" />
+          <button type="submit"><i class="bi bi-check2"></i></button>
+        </form>
+        <a href="/tasks/edit/<%= task.id %>"><i class="bi bi-pencil-square"></i></a>
         <form action="/tasks/remove" method="POST">
-          <input type="hidden" name="id" value="<%= task.id %>" /><button
-            type="submit"
-          >
-            <i class="bi bi-x-lg"></i>
-          </button>
+          <input type="hidden" name="id" value="<%= task.id %>" />
+          <button type="submit"><i class="bi bi-x-lg"></i></button>
         </form>
       </div>
     </li>

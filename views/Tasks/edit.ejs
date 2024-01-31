@@ -1,7 +1,7 @@
 <%- include("../layouts/main") %>
 <h1 style="text-align: center;">Editando a Tarefa <%= tasks.title %></h1>
 <div class="container">
-  <form action="/tasks/add" method="POST">
+  <form action="/tasks/edit" method="POST">
     <input type="hidden" name="id" value="<%= tasks.id %>" />
     <div class="form-control">
       <label for="title">Título:</label>
